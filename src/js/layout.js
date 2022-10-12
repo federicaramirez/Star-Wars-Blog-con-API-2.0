@@ -9,6 +9,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
+import Leermas from "./views/leermas.jsx";
 
 //create your first component
 const Layout = () => {
@@ -28,8 +29,8 @@ const Layout = () => {
 						<Route exact path="/favoritos">
 							<Favoritos />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/leermas/:theid">
+							<Leermas />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -4,12 +4,19 @@ import {Link} from "react-router-dom"
 import Cartas from "../component/cartas.jsx";
 
 const Cuerpo = (props) => {
+    
+    //mapa de cartas
+    const mapObjetos = props.obj.map((item, index)=>{
+        return <Cartas key={index} name={item.name} />
+    })
+    
     return (
        <> 
        <h2 className="mx-4">{props.title}</h2>
-        <div className="d-flex mx-3 "> 
-        <Cartas />
-         </div>
+       
+        <pre className="d-flex mx-3 chroma"> 
+        {mapObjetos}
+         </pre>
         </>
     )
 }

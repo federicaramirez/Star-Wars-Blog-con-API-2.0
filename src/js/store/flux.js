@@ -14,14 +14,14 @@ const getState = ({ getStore, getActions, setStore }) => {
  llamarAppiPersonas : async () => {
 	fetch("https://www.swapi.tech/api/people")
 	.then((response)=>response.json())
-	.then((data)=>setStore({llamarAppiPersonas : data.results}))
+	.then((data)=>setStore({objetoPersonas : data.results}))
 }, 
 
 //Llamado planetas
 llamarAppiPlanetas : async () => {
 	fetch("https://www.swapi.tech/api/planets")
 	.then((response)=>response.json())
-	.then((data)=>setStore({llamarAppiPlanetas : data.results}))
+	.then((data)=>setStore({objetoPlanetas : data.results}))
 
 
 		}

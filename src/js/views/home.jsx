@@ -14,10 +14,10 @@ return(
 	<br />
 	<div className="mt-5 container">
 		
-	<div>	<Cuerpo title="People" obj={store.llamarAppiPersonas} />
+	<div>	<Cuerpo title="People" obj={store.objetoPersonas} />
 		<br /></div>
 
-		<div><Cuerpo title="Planets" obj={store.llamarAppiPlanetas} />
+		<div><Cuerpo title="Planets" obj={store.objetoPlanetas} />
 		<br /> </div>
 
 		{/* <Cuerpo title="Vehicles" />
