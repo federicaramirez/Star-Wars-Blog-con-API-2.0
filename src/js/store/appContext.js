@@ -24,7 +24,7 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.llamarAppiPersonas()
 			state.actions.llamarAppiPlanetas()
-
+			state.actions.llamarAppiVehiculos()
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

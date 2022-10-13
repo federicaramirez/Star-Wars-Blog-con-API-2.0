@@ -20,9 +20,9 @@ return(
 		<div><Cuerpo title="Planets" obj={store.objetoPlanetas} />
 		<br /> </div>
 
-		{/* <Cuerpo title="Vehicles" />
-		<br /> */}
-		
+		<div><Cuerpo title="Vehicles" obj={store.objetoVehiculos} />
+		<br />
+		</div>
 	</div>
 	</>
 	)

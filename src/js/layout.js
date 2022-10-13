@@ -9,7 +9,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
-import Leermas from "./views/leermas.jsx";
+import LeermasPersonas from "./views/leermaspersonas.jsx";
+import LeermasPlanetas from "./views/leermasplanetas.jsx";
+import LeermasVehiculos from "./views/leermasvehiculos.jsx";
 
 //create your first component
 const Layout = () => {
@@ -18,7 +20,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
+		<div style={{background:"#1e272e"}}>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
@@ -29,8 +31,14 @@ const Layout = () => {
 						<Route exact path="/favoritos">
 							<Favoritos />
 						</Route>
-						<Route exact path="/leermas/:theid">
-							<Leermas />
+						<Route exact path="/leermas/personas/:theid">
+							<LeermasPersonas />
+						</Route>
+						<Route exact path="/leermas/planetas/:theid">
+							<LeermasPlanetas />
+						</Route>
+						<Route exact path="/leermas/vehiculos/:theid">
+							<LeermasVehiculos />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
