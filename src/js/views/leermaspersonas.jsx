@@ -28,6 +28,7 @@ const LeermasPersonas = () => {
         setNext(String(Number(params.theid)+1))
     }, [params.theid] )
 
+    
  return( <>
  <br />
  <div className= "d-flex container"> 
