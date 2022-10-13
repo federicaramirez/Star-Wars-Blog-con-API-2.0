@@ -52,11 +52,11 @@ const pressFav = () => {
         <img src={apiImagenes?.url} className="card-img-top" alt="..." style={{width:"18rem"}}/>
         <div className="card-body text-light">
             <h5 className="card-title ">{props.name}</h5>
-            <p className="card-text">info</p>
+            <hr />
             
             <div className= "d-flex justify-content-between" >
-            <Link to={"/leermas/" + subDom + props.uid} className="btn btn-primary">Leer mas...</Link>
-            <Link to="/" className="btn btn-warning" onClick={pressFav}><i className={"fa fa-heart "+ marcarFav}/></Link>
+            <Link to={"/leermas/" + subDom + props.uid} className="btn btn-primary" >Leer mas...</Link>
+            <Link onClick={()=>actions.funFavorites(props.name)} to="" className="btn btn-warning" ><i className={"fa fa-heart "+ marcarFav}/></Link>
             </div>
         </div>
     </div>)
