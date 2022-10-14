@@ -5,7 +5,6 @@ import { Context } from "../store/appContext";
 
 
 
-
 const Cartas = (props) => {
 
     let {store, actions} = useContext(Context)

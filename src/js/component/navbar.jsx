@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import {Context} from "../store/appContext";
 
@@ -6,10 +6,10 @@ import {Context} from "../store/appContext";
 export const Navbar = () => {
     let {store, action}= useContext(Context)
     
-    const screenList= store?.favorite.map((item)=>{
+    const screenList = store?.favorite.map((item)=>{
       return (
         <div key={item}>
-          <li className="text-info ms-3 my-1"> {item}</li> 
+          <li className="text-info ms-3 my-1">{item}</li> 
           </div>
       )
 
@@ -26,16 +26,15 @@ export const Navbar = () => {
             </button>
             <div className="offcanvas offcanvas-end text-bg-dark" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                    <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Favoritos</h5>
                     <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div className="ml-auto nav-item dropdown">        
-            <Link className="nav-link dropdown-toggle" to="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Favoritos
-            </Link>
             <ul className="dropdown-menu-dark">{screenList}</ul>
             </div>
             </div>
         </div>
     </nav>);
 };
+
+export default Navbar;

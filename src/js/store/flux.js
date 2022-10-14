@@ -42,11 +42,19 @@ const getState = ({getStore, getActions, setStore}) => {
             llamarAppiVehiculo: (id) => {
                 fetch("https://www.swapi.tech/api/vehicles/" + id).then((response) => response.json()).then((data) => setStore({unVehiculo: data.result}))
             },
+			 
+
+			DelFavorite: (pfavorite) => {
+				const store = getStore()
+				setStore({
+					favorite: [...store.favorite.filter((item => item !== pfavorite))]
+				})
+			},
 
             funFavorites: (pfavorite) => {
                 const store = getStore()
                 const actions = getActions()
-                if (store.favorite.incluides(pfavorite)) { 
+                if (store.favorite.includes(pfavorite)) { 
 					// elimina
                     actions.DelFavorite(pfavorite)
                 } else {
@@ -57,15 +65,7 @@ const getState = ({getStore, getActions, setStore}) => {
                 }
 
 
-            },
-
-			DelFavorite: (pfavorite) => {
-				const store = getStore()
-				setStore({
-					favorite: [...store.favorite.filter((item => item !== pfavorite))]
-				})
-			}, 
-
+            }
 
         }
     }
