@@ -1,11 +1,24 @@
 import React, { useContext, useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import {Context} from "../store/appContext";
-
+import "../../styles/home.css";
 
 export const Navbar = () => {
-    let {store, action}= useContext(Context)
+    let {store, actions}= useContext(Context)
     
+  const [visibilidadBotonFav, setVisibilidadBotonFav] = useState("hidden")
+  const [visibilidadBotonLo, setVisibilidadBotonLo] = useState("show")
+
+  useEffect(()=>{
+    if (store.auth === true){
+      setVisibilidadBotonFav("show")
+      setVisibilidadBotonLo("hidden")
+    } else{
+      setVisibilidadBotonFav("hidden")
+      setVisibilidadBotonLo("show")
+    }
+  })
+  
     const screenList = store?.favorite.map((item)=>{
       return (
         <div key={item}>
@@ -22,13 +35,17 @@ export const Navbar = () => {
                 <img alt="Logo" width="50" height="60"
                     src={"https://cdn.worldvectorlogo.com/logos/star-wars-2.svg"}></img>
             </Link>
-            <button className="navbar-toggler btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <Link className={"btn btn-outline-light "+visibilidadBotonLo} type="submit" to="/login">Login</Link>
+            <div className={visibilidadBotonFav}>
+            <button type="button" className="btn btn-link d-flex" onClick={()=>actions.singOf()}>Sign off</button>
+            <button className="navbar-toggler btn-warning " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                 <span className="navbar-toggler-icon btn-warning" ></span>
             </button>
-            <div className="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            </div>
+            <div className="offcanvas offcanvas-end bg-light" tabIndex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div className="offcanvas-header">
         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">Favoritos</h5>
-        <button type="button" class="btn-close btn-close-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" className="btn-close btn-close-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
                 <div className="ml-auto nav-item dropdown">        
             <ul className="dropdown-menu-dark">{screenList}</ul>

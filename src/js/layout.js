@@ -12,6 +12,8 @@ import { Footer } from "./component/footer";
 import LeermasPersonas from "./views/leermaspersonas.jsx";
 import LeermasPlanetas from "./views/leermasplanetas.jsx";
 import LeermasVehiculos from "./views/leermasvehiculos.jsx";
+import Authentication from "./views/authentication.jsx";
+import CreateUser from "./views/createuser.jsx";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +41,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/leermas/vehiculos/:theid">
 							<LeermasVehiculos />
+						</Route>
+						<Route exact path="/login">
+							<Authentication />
+						</Route>
+						<Route exact path="/signup">
+							<CreateUser />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

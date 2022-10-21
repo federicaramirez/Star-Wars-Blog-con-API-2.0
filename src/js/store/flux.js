@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const getState = ({getStore, getActions, setStore}) => {
 
     return {
@@ -10,11 +12,68 @@ const getState = ({getStore, getActions, setStore}) => {
             // id particulares
             unaPersona: {},
             unPlaneta: {},
-            unVehiculo: {}
+            unVehiculo: {},
+
+            auth: false
         },
 
 
         actions: {
+
+            singIn: async (name, email, password) => {
+                try{
+
+                    const response = await axios.post('https://3000-federicaram-buildastarw-l1shaiv8gw7.ws-us72.gitpod.io/user', {
+                        "name": name,
+                        "email": email,
+                        "password": password,
+                        "is_active": "True"
+                    })
+                    console.log(response)
+
+                }catch(error){
+                    if(error.code === "ERR_BAD_REQUEST"){
+                        alert(error.response?.data?.msg)
+                    }
+                }
+            },
+
+
+            //Llamada a la API backend para login comprobando si existe usuario
+            loginBack: async(email,password) => {
+                console.log(email,password)
+
+                try{
+                    const response = await fetch('https://3000-federicaram-buildastarw-l1shaiv8gw7.ws-us72.gitpod.io/login', {
+                        method: "POST",
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        }),
+                        headers : {
+                            'Content-type': 'application/json'
+                        }
+                    }) 
+                    if(response.status === 200){
+                        const data = await response.json()
+                        console.log(data)
+
+                        //Guardar en el navegador
+                        localStorage.setItem("token", data.access_token)
+                        setStore({auth: true})
+                    } else {
+                        alert("Wrong email or password")
+                    }
+                    
+                } catch(err){ console.log(err);}
+            },
+
+                //Remover el token para cerrar sesion
+            singOf: () => {
+                localStorage.removeItem("token")
+                setStore({auth: false})
+            },
+
 
             // Llamado a personas
             llamarAppiPersonas: () => {
