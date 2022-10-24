@@ -52,8 +52,8 @@ return (
   </div>
   
   <div className="mb-3 text-light">
-    <label htmlFor="exampleInputPassword1" className="form-label" >Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e)=> setGuardadoPassword(e.target.value)} value={guardadoPassword} onKeyDown={inputFunction}/>
+    <label htmlFor="exampleInputPassword" className="form-label" >Password</label>
+    <input type="password" className="form-control" id="exampleInputPassword" onChange={(e)=> setGuardadoPassword(e.target.value)} value={guardadoPassword} onKeyDown={inputFunction}/>
   </div>
   <div>
   <button className="btn btn-primary mx-2" onClick={sumbit}>Login</button>

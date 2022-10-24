@@ -14,6 +14,7 @@ import LeermasPlanetas from "./views/leermasplanetas.jsx";
 import LeermasVehiculos from "./views/leermasvehiculos.jsx";
 import Authentication from "./views/authentication.jsx";
 import CreateUser from "./views/createuser.jsx";
+import Settings from "./views/settings.jsx";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup">
 							<CreateUser />
+						</Route>
+						<Route exact path="/settings">
+							<Settings />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -7,7 +7,12 @@ const CreateUser = () => {
 
     return (
         <>
+        <br />
+        <div style={{width: '100%'}} className="d-flex justify-content-center">
+        <div className="card bg-dark mb-6 d-flex" >
         <Register />
+        </div>
+        </div>
         </>
     )
 

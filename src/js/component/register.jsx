@@ -31,7 +31,7 @@ const Register = () => { // Definir estados
         <>
             <div className="content-center mb-6">
                 <div className="mb-3 text-light">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Name</label>
+                    <label className="form-label">Name</label>
                     <input type="text" className="form-control" id="exampleInputPassword1"
                         onChange={
                             (e) => setGuardadoName(e.target.value)
@@ -51,7 +51,7 @@ const Register = () => { // Definir estados
                 </div>
                 <div className="mb-3 text-light">
                     <label htmlFor="exampleInputPassword1" className="form-label">New Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1"
+                    <input type="password" className="form-control" id="exampleInputPas"
                         onChange={
                             (e) => setGuardadoPassword(e.target.value)
                         }
