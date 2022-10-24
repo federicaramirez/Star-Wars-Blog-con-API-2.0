@@ -1,4 +1,9 @@
+import React from "react";
 import axios from "axios";
+import {
+    useHistory
+} from "react-router-dom";
+
 
 const getState = ({
     getStore,
@@ -19,7 +24,9 @@ const getState = ({
             unVehiculo: {},
 
             profile: {},
-            auth: false
+            auth: false,
+            history: useHistory()
+
         },
 
 
@@ -28,7 +35,7 @@ const getState = ({
             singIn: async (name, email, password) => {
                 try {
 
-                    const response = await axios.post('https://3000-federicaram-buildastarw-lanqwt8ma44.ws-us72.gitpod.io/user', {
+                    const response = await axios.post('https://3000-federicaram-buildastarw-8tcr5miawop.ws-us72.gitpod.io/user', {
                         "name": name,
                         "email": email,
                         "password": password,
@@ -45,13 +52,16 @@ const getState = ({
 
             validarToken: async () => {
                 const checkToken = localStorage.getItem("token")
+                console.log(checkToken);
                 try {
-                    const response = await axios.get('https://3000-federicaram-buildastarw-lanqwt8ma44.ws-us72.gitpod.io/profile', {
+                    const response = await axios.get('https://3000-federicaram-buildastarw-8tcr5miawop.ws-us72.gitpod.io/valid_token', {
                         headers: {
-                            Authorization: "Bearer" + checkToken
+                            Authorization: "Bearer " + checkToken
                         }
                     })
-                    return true;
+                    setStore({
+                        auth: response.data.status
+                    });
                 } catch (error) {
                     console.log(error);
                     if (error.code === 'ERR_BAD_REQUEST') {
@@ -63,12 +73,34 @@ const getState = ({
                 }
             },
 
+            getProfile: async () => {
+                let eltoken = localStorage.getItem("token")
+                try {
+                    const response = await axios.get('https://3000-federicaram-buildastarw-8tcr5miawop.ws-us72.gitpod.io/profile', {
+                        headers: {
+                            Authorization: "Bearer " + eltoken
+                        }
+                    }) 
+                    console.log(response);
+                    setStore({
+                        profile: response.data.user
+                    });
+                } catch (error) {
+                    // console.log(error);
+                    if (error.code === 'ERR_BAD_REQUEST') {
+                        alert(error.response?.data .msg)
+                    }
+                    return false;
+                }
+
+            },
+
             //Llamada a la API backend para login comprobando si existe usuario
             loginBack: async (email, password) => {
                 console.log(email, password)
 
                 try {
-                    const response = await fetch('https://3000-federicaram-buildastarw-lanqwt8ma44.ws-us72.gitpod.io/login', {
+                    const response = await fetch('https://3000-federicaram-buildastarw-8tcr5miawop.ws-us72.gitpod.io/login', {
                         method: "POST",
                         body: JSON.stringify({
                             email: email,
@@ -96,27 +128,6 @@ const getState = ({
                 }
             },
 
-            getProfile: async () => {
-                let eltoken = localStorage.getItem("token")
-                try {
-                    const response = await axios.get('https://3000-federicaram-buildastarw-lanqwt8ma44.ws-us72.gitpod.io/profile', {
-                        headers: {
-                            Authorization: "Bearer" + eltoken
-                        }
-                    })
-                    setStore({
-                        profile: response.data.user
-                    });
-                    return true;
-                } catch (error) {
-                    console.log(error);
-                    if (error.code === 'ERR_BAD_REQUEST') {
-                        alert(error.response.data.msg)
-                    }
-                    return false;
-                }
-
-            },
 
             //Remover el token para cerrar sesion
             singOf: () => {

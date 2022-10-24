@@ -13,6 +13,7 @@ const Authentication = () => {
         <br />
         <div style={{width: '100%'}} className="d-flex justify-content-center">
         <div className="card bg-dark mb-6 d-flex" style={{width: '22rem'}}>
+            <h1 className="text-light">Login</h1>
         <img alt="Login" width="600" height="300" className="card-img-top"
                     src={"https://i.blogs.es/69fdcc/star-wars-saga/450_1000.jpg"}></img>
         <Login />
